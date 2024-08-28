@@ -1,0 +1,190 @@
+###########	Expriment 1: Configure LAN	##################
+
+switch used 2950-24 and 4 ta pc (Switch er sathe  4 ta pc connected )
+
+eikhane kichui korte hbe na. just ip configure and ping[ip address 192.168.1.2 emon]
+
+
+#############	Experiment 2 : Transfer packet through different network    ###############
+
+2950-24 switch, 2811 router(2 ta pc-switch-router-switch-2 ta pc)
+router configure korte hobe
+Router>enable
+Router#configure terminal
+Router(config)#interface FastEthernet0/0
+Router(config-if)#ip address 192.165.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+
+Router(config)#interface FastEthernet0/1
+Router(config-if)#ip address 192.165.2.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+
+[ekhane default gateway dite hbe]
+
+
+############	Experiment 3 : To configure dynamic ip routing through DHCP      ##################
+
+router - switch - 3 ta pc
+
+router configuration:
+Router>en
+Router#configure terminal
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+
+Router(config)#ip dhcp pool ice
+Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+Router(dhcp-config)#default-router 192.168.1.1
+Router(dhcp-config)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#wr
+Building configuration...
+[OK]
+
+
+################ 	 Experiment 4 [to configure EIGRP]		#########################
+WIC-IENET add korte hobe
+
+eikhane 3 ta router. proti router er under e ekta kore switch and switch er under e 2 t akore pc
+router-router ------ fa0/0-fa0/0---network address 172.15.0.0/16
+router-router ------ Ehternet0/0/0---Ehternet0/0/0---network address 172.16.0.0/16
+router-router ------ Ehternet0/1/0---Ehternet0/1/0---network address 172.17.0.0/16
+
+router to switch -----network address 192.168.1.0/24, 192.168.2.0/24, 192.168.3.0/24
+
+
+HostName configuration:
+router>en
+router#configure terminal
+router(config)#hostname PUST
+router(config)#exit
+#wr
+
+
+IP configure for PUST:
+router>enable
+rouer#configure terminal
+#hostname PUST
+#interface Ethernet 0/0/0
+#ip address 172.16.0.1 255.255.0.0
+#no shutdown
+#exit
+
+#interface Ethernet 0/1/0
+#ip address 172.15.0.1 255.255.0.0
+#no shutdown
+#exit
+
+#interface fastEthernet 0/0
+#ip address 192.168.1.1 255.255.255.0
+#no shutdown
+#exit
+#wr
+
+
+EIGRP configuration:
+PUST>en
+PUST(config)#router eigrp 20
+#network 192.168.1.0
+#network 172.15.0.0
+#network 172.16.0.0
+#exit 
+
+
+same vabe aro 2 ta korte hobe
+
+
+############	Experiment 5 : Routing Information Protocol	#####################
+
+2 t router er under e 2 ta switch tar under e ekta kore pc
+..2950-24 switch and 2811 router
+
+router>en
+#configure terminal
+#interface fastEtherner 0/0
+#ip address 192.168.1.1 255.255.255.0
+#no shutdown
+#exit
+#interfaceface fastEthernet 0/1
+#ip address 192.168.2.1 255.255.255.0
+#no shut down
+#exit
+#exit
+#wr
+
+RIP configuration:
+
+router>en
+#configure terminal
+#router RIP
+#version 2
+#network 192.168.1.0
+#network 192.168.2.0
+#exit
+#wr
+
+evabe jotogulo router thakbe totbar korte hbe
+
+
+########################    Experiment 6 : To configure Open Shortest Path First (OSPF) Routing protocol. ###############
+same as 5 figure and router config
+OSPF config :
+
+Router>en
+#configure terminal
+#router ospf 1
+#network 192.168.1.0 0.0.0.255 area 0
+#network 192.168.2.0 0.0.0.255 area 0
+#exit #exit
+#wr
+
+
+
+
+#############       Experiment 7 : To configure VLAN 	#############
+
+eikhane 2 ta switch ektar sathe arekta connected thakbe and per switch er under e 4 ta kore host
+
+CLI Command:
+Switch>en
+Switch #configure terminal
+Switch(config)#VLAN 10
+Switch(config )#Name IT
+Switch(config )#exit
+Switch(config )#VLAN 20
+Switch(config )#Name HR
+Switch(config )#exit
+Switch(config )#exit
+Switch(config )#show VLAN brief
+
+Switch#configure terminal
+Switch(config )#interface fa0/1
+Switch(config )#switchport access vlan 10
+Switch(config )#exit
+Switch(config )#interface fa0/2
+Switch(config )#switchport access vlan 10
+Switch(config )#interface fa0/3
+Switch(config )#switchport access vlan 20
+Switch(config )#interface fa0/4Switch(config )#switchport access vlan 20
+
+Switch>en
+Switch#configure terminal
+Switch(config )#interface fastEthernet 0/5
+Switch(config)#switchport mode trunk
+Switch(config)#exit
+Switch(config )#interface fastEthernet 0/1- fastEthernet 0/4
+Switch(config)#switchport mode access
+Switch(config)#exit
+
+
+
+
+
+
