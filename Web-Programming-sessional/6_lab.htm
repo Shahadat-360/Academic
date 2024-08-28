@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Personal details</title>
+    <style>
+        h3{
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            display: block;
+            margin: auto auto;
+        }
+        .same {
+            margin: 10px auto;
+            display: block;
+            text-align: center;
+        }
+        .email label{
+            font-weight: bold;
+            padding-left: 63px;
+        }
+        .name label {
+            font-weight: bold;
+            padding-left: 64px;
+        }
+        .phone label{
+            font-weight: bold;
+        }
+        .password label{
+            font-weight:bold;
+            padding-left:37px;
+        }
+        input {border: 1px solid black;height: 22px;width: 50%;border-radius: 2%;}
+        label#gen {
+            font-weight: bold;
+            padding-left: 160px;
+        }
+        .gender input {
+            width: 30px;
+            height: 15px;
+        }
+        .gender {
+            text-align: left;
+        }
+        button.green_color {
+            color: white;
+            background: green;
+            padding: 6px;
+            border: 1px solid black;
+            margin: auto;
+            text-align: center;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h3>Personal Details</h3>
+    <form action="#">
+        <div class="name same">
+            <label for="">Name:</label>
+            <input type="text" required>
+        </div>
+        <div class="email same">
+            <label for="">Email:</label>
+            <input type="email" required>
+        </div>
+        <div class="phone same">
+            <label for="">Phone Number: </label>
+            <input type="tel" required>
+        </div>
+        <div class="password same">
+            <label for="">Password: </label>
+            <input type="password" required>
+        </div>
+
+        <div class="gender same">
+            <label for="" id="gen">Gender: </label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+        <button class="green_color" type="submit">Submit</button>
+    </form>
+</body>
+</html>
