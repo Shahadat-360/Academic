@@ -9,7 +9,6 @@ print(f'delT = {delT:.2f} microseconds')
 
 # Define parameters for part (b)
 Tn = 4  # Time in microseconds
-delT = Tn / N
 
 # Calculate maximum bandwidth (MBW)
 MBW = 2 / delT  # Bandwidth in MHz
