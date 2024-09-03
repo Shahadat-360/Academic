@@ -1,0 +1,18 @@
+clc;
+clear all;
+close all;
+Fm=4;
+mt_max_value=8;
+gain=10;
+disp('(a)');
+peak_deviation_delta_f=mt_max_value*gain;
+disp("The peak frequency deviation = ");
+disp(peak_deviation_delta_f);
+disp('(b)');
+modulating_index_Bf=(peak_deviation_delta_f/Fm);
+disp("The modulating index = ");
+disp(modulating_index_Bf);
+disp('(c)');
+phase_modulation_index_Bp=(gain*mt_max_value);
+disp("The phase modulation index = ");
+disp(phase_modulation_index_Bp);

@@ -1,0 +1,25 @@
+clc;
+clear all;
+close all;
+trans_fre=270.833;
+Num_of_bits_in_each_time_slot=(6+8.25+26+2*58)
+disp('(A)');
+BOH=(8*6+8*8.25+8*26);
+disp("Number of overhead bit =");
+disp(BOH);
+disp('(B)');
+Num_of_bits_per_frame=(8*Num_of_bits_in_each_time_slot);
+disp("Number of bits per frame =");
+disp(Num_of_bits_per_frame);
+disp('(C)');
+frame_rate=(trans_fre/Num_of_bits_per_frame)*1000;
+disp("Frame rate =");
+disp(frame_rate);
+disp('(D)');
+time_duration_of_a_slot=Num_of_bits_in_each_time_slot*(1/trans_fre)*1000;
+disp("Time duration of a slot =");
+disp(time_duration_of_a_slot);
+disp('(E)');
+frame_efficiency=(1-(BOH/Num_of_bits_per_frame))*100;
+disp("Frame efficiency =");
+disp(frame_efficiency);
