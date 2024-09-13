@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 # Step function for bipolar input
 def step_function(x):
-    
     return np.where(x > 0, 1, np.where(x<0,-1,0))
 
 # Perceptron training function
@@ -29,9 +28,6 @@ def perceptron_training(inputs, targets, learning_rate=1, epochs=10):
         
         errors.append(total_error)
         print(f'Epoch {epoch+1} of {epochs}, Total Error: {total_error}')
-        
-        if total_error == 0:
-            break
     
     return weights, bias, errors
 
