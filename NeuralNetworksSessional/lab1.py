@@ -76,6 +76,6 @@ targets = np.array([-1, -1, -1, 1])
 learning_rate = 1
 epochs = 10
 weights, bias, errors = perceptron_training(inputs, targets, learning_rate, epochs)
-print("x1 and x2 =",weights,"Bias =",bias)
+print("W1 and W2 =",weights,"Bias =",bias)
 # Plot results
 plot_results(inputs, targets, weights, bias, errors)
