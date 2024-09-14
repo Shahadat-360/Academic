@@ -7,6 +7,10 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+#Avoid Complication
+# https://colab.research.google.com/drive/1hRoOy9fDLL6Gt0fL40phhDdmuipp5p8I?usp=sharing
+
 # Load the dataset
 data = pd.read_csv('user-data.csv')
 
