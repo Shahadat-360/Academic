@@ -1,4 +1,3 @@
-# Import necessary libraries
 import numpy as np
 import pandas as pd
 from sklearn.svm import SVC
@@ -9,19 +8,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset
-data = pd.read_csv('online_shoppers_intention.csv')
-
-# Display the first few rows of the dataset
-print(data.head())
+data = pd.read_csv('user-data.csv')
 
 # Handle categorical variables
 label_encoder = LabelEncoder()
 for column in data.select_dtypes(include=['object']).columns:
     data[column] = label_encoder.fit_transform(data[column])
 
+# data structured
+print(data.head())
+
 # Extract features and target variable
-X = data.drop('Revenue', axis=1).values  # Features
-y = data['Revenue'].values                 # Target variable
+X = data.drop(['user_id','purchased'], axis=1).values  # Features
+y = data['purchased'].values                 # Target variable
 
 # Split the dataset into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -31,7 +30,6 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-print(X_train)
 # Train the SVM classifier
 classifier = SVC(kernel='linear', random_state=0)
 classifier.fit(X_train, y_train)
